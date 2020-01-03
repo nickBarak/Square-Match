@@ -7,6 +7,10 @@
   font-size: 1em;
 }
 
+.ho {
+  display: none;
+}
+
 body {
   background-color: #383838;
 }
