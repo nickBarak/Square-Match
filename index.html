@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <meta name="google-signin-client_id" content="307551660531-5v872q426s0efhdd8slknt3d8fm2kvbi.apps.googleusercontent.com.apps.googleusercontent.com">
+        <meta name="google-signin-client_id" content="307551660531-edetdp742dlq1fbhicnom5365ctfv8s8.apps.googleusercontent.com">
         <link rel="stylesheet" href="../css/style.css" />
         <title>SquareMatch</title>
     </head>
@@ -114,8 +114,8 @@
         <div id="me">Nick Barak</div>
 
         <div class="fb-login-button" style="position: absolute; top: 49px; right: 32px;" data-width="" data-size="medium" data-button-type="continue_with" data-auto-logout-link="true" data-use-continue-as="false"></div>
-        <div class="g-signin2" style="height: 27px; width: 98px; position: absolute; top: 13px; right: 32px;" data-onsuccess="onSignIn"></div>
-
+        <div class="g-signin2" onclick="GoogleAuth.signOut()" style="height: 27px; width: 98px; position: absolute; top: 13px; right: 32px;" data-onsuccess="onSignIn"></div>
+    
         <script type="text/JavaScript" src="../js/main.js"></script>
 
     </body>
