@@ -99,7 +99,7 @@ header
 
 #victoryMsgBox
     position: absolute
-    display: none
+    display: flex
     flex-direction: column
     top: 17.2%
     height: 525px
@@ -120,19 +120,19 @@ header
     font-weight: 900
     background-color: white
     z-index: 1
-    display: none
+    display: block
 
 #victoryTime
     font-size: 1.5em
     margin-top: 225px
     z-index: 1
-    display: none
+    display: block
 
 #recordTime
     font-size: 1.25em
     margin-top: 20px
     z-index: 1
-    display: none
+    display: block
 
 #content
     padding-bottom: 2.5em
@@ -221,9 +221,11 @@ footer
         font-size: 5vw
 
     #victoryTime
+        margin-top: 125px
         font-size: 2vw
 
     #recordTime
+        margin-top: 15px
         font-size: 1.5vw
 
 @media only screen and (max-width: 1100px)
@@ -274,11 +276,12 @@ footer
         font-size: 70px
 
     #victoryTime
+        margin-top: 80px
         font-size: 1.2rem
 
     #recordTime
+    margin-top: 10px
         font-size: 1rem
-        margin-bottom: 10rem
 
     #squares-remaining
         font-size: 1rem
@@ -317,16 +320,20 @@ footer
         font-size: .75rem
 
     #victoryMsgBox
-        height: 185px
-        width: 185px
+        top: 60vw
+        height: 150px
+        width: 150px
+
 
     #victoryMsg
-        font-size: 40px
+        font-size: 20px
 
     #victoryTime
+        margin-top: 60px
         font-size: .775rem
 
     #recordTime
+        margin-top: 5px
         font-size: .65rem
 
 @media only screen and (max-width: 420px)
