@@ -117,6 +117,15 @@
         <div class="fb-login-button" style="position: absolute; top: 45px; right: 32px;" data-width="" data-size="medium" data-button-type="continue_with" data-auto-logout-link="true" data-use-continue-as="false"></div>
         <div class="g-signin2" onclick="GoogleAuth.signOut()" style="height: 26.5px; width: 97.5px; position: absolute; top: 10px; right: 32px;" data-onsuccess="onSignIn"></div>
 
+        <script>
+            function signOut() {
+              var auth2 = gapi.auth2.getAuthInstance();
+              auth2.signOut().then(function () {
+                console.log('User signed out.');
+              });
+            }
+        </script>
+          
         <script type="text/JavaScript" src="../js/main.js"></script>
 
     </body>
