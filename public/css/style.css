@@ -1,0 +1,384 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: arial;
+  font-size: 1em;
+}
+
+body {
+  background-color: #383838;
+}
+
+header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[9];
+      grid-template-columns: repeat(9, 1fr);
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+}
+
+#title {
+  color: white;
+  font-size: 2.5em;
+  font-family: OCR A Std, monospace, Arial, Comic Sans MS, Georgia;
+  font-weight: 800;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-column: 2 / 4;
+  padding-top: 5px;
+  margin-left: 2.2rem;
+}
+
+#prompt {
+  font-size: 2em;
+  margin: 1em auto .5em auto;
+  font-weight: 600;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 3;
+  grid-column: 4 / 7;
+  white-space: nowrap;
+}
+
+.btn-wrapper {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 75vw;
+  margin: .5em auto .675em auto;
+}
+
+.btn-wrapper a {
+  text-decoration: none;
+}
+
+.btn-wrapper a:hover {
+  -webkit-text-decoration: #fff;
+          text-decoration: #fff;
+}
+
+#reset {
+  display: inline;
+  padding: 2.5px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+#reset:hover {
+  cursor: pointer;
+  background-color: #fff;
+}
+
+#timer {
+  display: inline;
+  position: absolute;
+  left: 60px;
+  padding-top: 4px;
+}
+
+.toggle-wrapper {
+  display: inline;
+  position: absolute;
+  padding-top: 8px;
+  right: 2px;
+}
+
+.toggle-wrapper a {
+  text-decoration: none;
+  color: white;
+}
+
+.toggle-wrapper a:hover {
+  color: #ccc;
+}
+
+#squares {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (1fr)[4];
+      grid-template-rows: repeat(4, 1fr);
+  height: 80.75vh;
+  width: 75vw;
+  grid-gap: .6em;
+  padding: .5em;
+  margin: 0 auto 1.25em auto;
+  background-color: #777;
+  -webkit-box-shadow: 2px 2px #2a2a2a;
+          box-shadow: 2px 2px #2a2a2a;
+}
+
+.square {
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #aaa;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 1.5px 1.5px #5d5d5d;
+          box-shadow: 1.5px 1.5px #5d5d5d;
+  border-radius: 1.5px;
+}
+
+#squares-remaining {
+  display: block;
+  font-size: 1.25em;
+  text-align: center;
+}
+
+#victoryMsgBox {
+  position: absolute;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  top: 17.2%;
+  height: 525px;
+  width: 550px;
+  background-color: white;
+  border-radius: 12px;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  text-align: center;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#victoryMsg {
+  margin-top: 4%;
+  font-size: 100px;
+  color: red;
+  font-weight: 900;
+  background-color: white;
+  z-index: 1;
+  display: none;
+}
+
+#victoryTime {
+  font-size: 1.5em;
+  margin-top: 225px;
+  z-index: 1;
+  display: none;
+}
+
+#recordTime {
+  font-size: 1.25em;
+  margin-top: 20px;
+  z-index: 1;
+  display: none;
+}
+
+#content {
+  padding-bottom: 2.5em;
+}
+
+footer {
+  height: 2.5em;
+  position: absolute;
+  bottom: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#copyright {
+  margin-bottom: 6px;
+}
+
+@media only screen and (max-width: 2400px) {
+  #title {
+    margin-left: 2rem;
+  }
+}
+
+@media only screen and (max-width: 2220px) {
+  #title {
+    margin-left: 1.8rem;
+  }
+}
+
+@media only screen and (max-width: 2050px) {
+  #title {
+    margin-left: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 1900px) {
+  #title {
+    margin-left: 1.2rem;
+  }
+}
+
+@media only screen and (max-width: 1650px) {
+  #squares {
+    height: 78vh;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  #squares {
+    height: 75vh;
+  }
+  #prompt {
+    font-size: 1.7rem;
+  }
+  .btn-wrapper {
+    margin-top: 1.35rem;
+  }
+}
+
+@media only screen and (max-width: 1350px) {
+  #squares {
+    height: 70vw;
+    grid-gap: .45em;
+  }
+  #title {
+    font-size: 2.25rem;
+  }
+  #prompt {
+    font-size: 1.55rem;
+  }
+  header {
+    margin-top: .5rem;
+  }
+  .btn-wrapper {
+    margin-top: 3rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #title {
+    font-size: 2rem;
+    margin-left: 1rem;
+  }
+  #prompt {
+    font-size: 1.25rem;
+  }
+  header {
+    margin-top: .9rem;
+  }
+  .btn-wrapper {
+    margin-top: 7rem;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  header {
+    margin-top: 7.5rem;
+  }
+  #prompt {
+    padding-top: 1.9rem;
+  }
+  .btn-wrapper {
+    margin-top: .45rem;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  header {
+    margin-top: 10rem;
+  }
+  #prompt {
+    padding-top: 2.3rem;
+    font-size: 1.15rem;
+  }
+  .square {
+    font-size: .8rem;
+  }
+}
+
+@media only screen and (max-width: 799px) {
+  #title {
+    font-size: 1.65rem;
+  }
+  #prompt {
+    font-size: 1rem;
+    padding-top: 2.5rem;
+  }
+  .btn-wrapper {
+    font-size: .85rem;
+  }
+  #squares-remaining {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  #title {
+    font-size: 1.4rem;
+  }
+  .btn-wrapper {
+    font-size: .75rem;
+  }
+  #squares {
+    grid-gap: .35em;
+    padding: .4em;
+  }
+  .square {
+    font-size: .7rem;
+  }
+  #squares-remaining, #prompt {
+    font-size: .875rem;
+  }
+  #prompt {
+    padding-top: 1.75rem;
+  }
+  footer {
+    font-size: .8rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #title {
+    font-size: 1.25rem;
+  }
+  #prompt, #squares-remaining {
+    font-size: .75rem;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  #title {
+    font-size: 1.1rem;
+  }
+  .btn-wrapper {
+    font-size: .7rem;
+  }
+  #squares {
+    padding: .35em;
+  }
+  .square {
+    font-size: .55rem;
+  }
+  #squares-remaining {
+    font-size: .8rem;
+  }
+  footer {
+    font-size: .71rem;
+  }
+}
+/*# sourceMappingURL=style.css.map */

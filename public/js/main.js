@@ -3,22 +3,22 @@ function reduceAlpha(e) {
         if (e.target.getAttribute("state")) {
             switch (e.target.getAttribute("state")) {
                 case "0":
-                    e.target.style.backgroundColor = "rgba(200, 0, 0, .875)";
+                    e.target.style.backgroundColor = "rgba(200, 0, 0, .91)";
                     break;
                 case "1":
-                    e.target.style.backgroundColor = "rgba(0, 200, 0, .875)";
+                    e.target.style.backgroundColor = "rgba(0, 200, 0, .93)";
                     break;
                 case "2":
-                    e.target.style.backgroundColor = "rgba(0, 0, 200, .87)";
+                    e.target.style.backgroundColor = "rgba(0, 0, 200, .9)";
                     break;
                 case "3":
-                    e.target.style.backgroundColor = "rgba(200, 200, 0, .895)";
+                    e.target.style.backgroundColor = "rgba(200, 200, 0, .95)";
                     break;
                 case "4":
-                    e.target.style.backgroundColor = "rgba(200, 0, 200, .875)";
+                    e.target.style.backgroundColor = "rgba(200, 0, 200, .93)";
                     break;
                 case "5":
-                    e.target.style.backgroundColor = "rgba(0, 200, 200, .895)";
+                    e.target.style.backgroundColor = "rgba(0, 200, 200, .94)";
                     break;
             }
         } else e.target.style.backgroundColor = "rgba(170, 170, 170, .85)";
@@ -293,10 +293,10 @@ function squaresRemaining() {
 
     if (modeCount === 16) {
         stopTimer();
-        document.getElementById("victoryMsgBox").style.zIndex = "1";
-        document.getElementById("victoryMsg").style.zIndex = "1";
-        document.getElementById("victoryTime").style.zIndex = "1";
-        document.getElementById("recordTime").style.zIndex = "1";
+        document.getElementById("victoryMsgBox").style.display = "flex";
+        document.getElementById("victoryMsg").style.display = "block";
+        document.getElementById("victoryTime").style.display = "block";
+        document.getElementById("recordTime").style.display = "block";
         document.getElementById("prompt").innerHTML = "Nice job!";
         document.getElementById("click")
             ? squareGrid.removeEventListener("click", rndClr)
