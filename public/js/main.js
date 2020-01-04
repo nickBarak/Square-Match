@@ -97,10 +97,13 @@ function init(e) {
                 document.getElementById("click")
                     ? squareGrid.addEventListener("click", rndClr)
                     : squareGrid.addEventListener("mouseover", rndClr);
-                if (document.getElementById("trace")) squareGrid.addEventListener("touchstart", rndClr);
+                if (document.getElementById("trace")) {
+                    squareGrid.addEventListener("touchmove", rndClr);
+                    squareGrid.addEventListener("touchend" , touchReset);
+                }
                 squareGrid.addEventListener("mouseover", reduceAlpha);
                 squareGrid.addEventListener("mouseout", restoreAlpha);
-                squareGrid.addEventListener("touchstart", reduceAlpha);
+                squareGrid.addEventListener("touchmove", reduceAlpha);
                 squareGrid.addEventListener("touchend", restoreAlpha);
             }, 2600);
         }
@@ -108,10 +111,10 @@ function init(e) {
             document.getElementById("click")
                 ? squareGrid.removeEventListener("click", init)
                 : squareGrid.removeEventListener("mouseover", init);
-            if (document.getElementById("trace")) squareGrid.removeEventListener("touchstart", init);
+            if (document.getElementById("trace")) squareGrid.removeEventListener("touchmove", init);
             squareGrid.removeEventListener("mouseover", reduceAlpha);
             squareGrid.removeEventListener("mouseout", restoreAlpha);
-            squareGrid.removeEventListener("touchstart", reduceAlpha);
+            squareGrid.removeEventListener("touchmove", reduceAlpha);
             squareGrid.removeEventListener("touchend", restoreAlpha);
         }
         function counting() {
@@ -159,7 +162,10 @@ function init(e) {
                     document.getElementById("click")
                         ? squareGrid.removeEventListener("click", rndClr)
                         : squareGrid.removeEventListener("mouseover", rndClr);
-                    if (document.getElementById("trace")) squareGrid.removeEventListener("touchstart", rndClr);
+                    if (document.getElementById("trace")) {
+                        squareGrid.removeEventListener("touchmove", rndClr);
+                        squareGrid.removeEventListener("touchend" , touchReset);
+                    }
                 }
                 time = [];
             }, 10);
@@ -309,7 +315,10 @@ function squaresRemaining() {
         document.getElementById("click")
             ? squareGrid.removeEventListener("click", rndClr)
             : squareGrid.removeEventListener("mouseover", rndClr);
-        if (document.getElementById("trace")) squareGrid.removeEventListener("touchstart", rndClr);
+        if (document.getElementById("trace")) {
+            squareGrid.removeEventListener("touchmove", rndClr);
+            squareGrid.removeEventListener("touchend" , touchReset);
+        }
     }
 }
 
@@ -330,8 +339,8 @@ let timerID;
 document.getElementById("click")
     ? squareGrid.addEventListener("click", init)
     : squareGrid.addEventListener("mouseover", init);
-if (document.getElementById("trace")) squareGrid.addEventListener("touchstart", init);
+if (document.getElementById("trace")) squareGrid.addEventListener("touchmove", init);
 squareGrid.addEventListener("mouseover", reduceAlpha);
 squareGrid.addEventListener("mouseout", restoreAlpha);
-squareGrid.addEventListener("touchstart", reduceAlpha);
+squareGrid.addEventListener("touchmove", reduceAlpha);
 squareGrid.addEventListener("touchend", restoreAlpha);
