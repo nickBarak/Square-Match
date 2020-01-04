@@ -329,6 +329,11 @@ function stopTimer() {
     ).innerHTML = `Finished in: ${timer.innerHTML}`;
 }
 
+function touchReset() {
+    squareGrid.removeEventListener("touchmove", rndClr);
+    squareGrid.addEventListener("touchmove", rndClr);
+}
+
 let squareGrid = document.getElementById("squares");
 let squareList = document.getElementsByClassName("square");
 let timer = document.getElementById("timer");
