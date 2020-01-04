@@ -97,12 +97,22 @@ function init(e) {
                 document.getElementById("click")
                     ? squareGrid.addEventListener("click", rndClr)
                     : squareGrid.addEventListener("mouseover", rndClr);
-                if (document.getElementById("trace")) squareGrid.addEventListener("touchmove", rndClr);
+                if (document.getElementById("trace")) squareGrid.addEventListener("touchstart", rndClr);
                 squareGrid.addEventListener("mouseover", reduceAlpha);
                 squareGrid.addEventListener("mouseout", restoreAlpha);
-                squareGrid.addEventListener("touchmove", reduceAlpha);
+                squareGrid.addEventListener("touchstart", reduceAlpha);
                 squareGrid.addEventListener("touchend", restoreAlpha);
             }, 2600);
+        }
+        function disableListeners() {
+            document.getElementById("click")
+                ? squareGrid.removeEventListener("click", init)
+                : squareGrid.removeEventListener("mouseover", init);
+            if (document.getElementById("trace")) squareGrid.removeEventListener("touchstart", init);
+            squareGrid.removeEventListener("mouseover", reduceAlpha);
+            squareGrid.removeEventListener("mouseout", restoreAlpha);
+            squareGrid.removeEventListener("touchstart", reduceAlpha);
+            squareGrid.removeEventListener("touchend", restoreAlpha);
         }
         function counting() {
             timerID = window.setInterval(() => {
@@ -149,7 +159,7 @@ function init(e) {
                     document.getElementById("click")
                         ? squareGrid.removeEventListener("click", rndClr)
                         : squareGrid.removeEventListener("mouseover", rndClr);
-                    if (document.getElementById("trace")) squareGrid.removeEventListener("touchmove", rndClr);
+                    if (document.getElementById("trace")) squareGrid.removeEventListener("touchstart", rndClr);
                 }
                 time = [];
             }, 10);
@@ -185,15 +195,8 @@ function init(e) {
         let p = 0;
         let loadClrsID;
         let promptID;
-        document.getElementById("click")
-            ? squareGrid.removeEventListener("click", init)
-            : squareGrid.removeEventListener("mouseover", init);
-        if (document.getElementById("trace")) squareGrid.removeEventListener("touchmove", init);
-        squareGrid.removeEventListener("mouseover", reduceAlpha);
-        squareGrid.removeEventListener("mouseout", restoreAlpha);
-        squareGrid.removeEventListener("touchmove", reduceAlpha);
-        squareGrid.removeEventListener("touchend", restoreAlpha);
         e.target.style.backgroundColor = e.target.getAttribute("init");
+        disableListeners();
         interval();
         addListeners();
         for (let i = 0; i < squareList.length; i++) {
@@ -306,7 +309,7 @@ function squaresRemaining() {
         document.getElementById("click")
             ? squareGrid.removeEventListener("click", rndClr)
             : squareGrid.removeEventListener("mouseover", rndClr);
-        if (document.getElementById("trace")) squareGrid.removeEventListener("touchmove", rndClr);
+        if (document.getElementById("trace")) squareGrid.removeEventListener("touchstart", rndClr);
     }
 }
 
@@ -327,8 +330,8 @@ let timerID;
 document.getElementById("click")
     ? squareGrid.addEventListener("click", init)
     : squareGrid.addEventListener("mouseover", init);
-if (document.getElementById("trace")) squareGrid.addEventListener("touchmove", init);
+if (document.getElementById("trace")) squareGrid.addEventListener("touchstart", init);
 squareGrid.addEventListener("mouseover", reduceAlpha);
 squareGrid.addEventListener("mouseout", restoreAlpha);
-squareGrid.addEventListener("touchmove", reduceAlpha);
+squareGrid.addEventListener("touchstart", reduceAlpha);
 squareGrid.addEventListener("touchend", restoreAlpha);
