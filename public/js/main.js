@@ -99,12 +99,12 @@ function init(e) {
                     : squareGrid.addEventListener("mouseover", rndClr);
                 if (document.getElementById("trace")) {
                     squareGrid.addEventListener("touchmove", rndClr);
-                    squareGrid.addEventListener("touchend" , touchReset);
+                    // squareGrid.addEventListener("touchend" , touchReset);
                 }
                 squareGrid.addEventListener("mouseover", reduceAlpha);
                 squareGrid.addEventListener("mouseout", restoreAlpha);
-                squareGrid.addEventListener("touchmove", reduceAlpha);
-                squareGrid.addEventListener("touchend", restoreAlpha);
+                // squareGrid.addEventListener("touchmove", reduceAlpha);
+                // squareGrid.addEventListener("touchend", restoreAlpha);
             }, 2600);
         }
         function disableListeners() {
@@ -114,8 +114,8 @@ function init(e) {
             if (document.getElementById("trace")) squareGrid.removeEventListener("touchmove", init);
             squareGrid.removeEventListener("mouseover", reduceAlpha);
             squareGrid.removeEventListener("mouseout", restoreAlpha);
-            squareGrid.removeEventListener("touchmove", reduceAlpha);
-            squareGrid.removeEventListener("touchend", restoreAlpha);
+            // squareGrid.removeEventListener("touchmove", reduceAlpha);
+            // squareGrid.removeEventListener("touchend", restoreAlpha);
         }
         function counting() {
             timerID = window.setInterval(() => {
@@ -164,7 +164,7 @@ function init(e) {
                         : squareGrid.removeEventListener("mouseover", rndClr);
                     if (document.getElementById("trace")) {
                         squareGrid.removeEventListener("touchmove", rndClr);
-                        squareGrid.removeEventListener("touchend" , touchReset);
+                        // squareGrid.removeEventListener("touchend" , touchReset);
                     }
                 }
                 time = [];
@@ -317,7 +317,7 @@ function squaresRemaining() {
             : squareGrid.removeEventListener("mouseover", rndClr);
         if (document.getElementById("trace")) {
             squareGrid.removeEventListener("touchmove", rndClr);
-            squareGrid.removeEventListener("touchend" , touchReset);
+            // squareGrid.removeEventListener("touchend" , touchReset);
         }
     }
 }
@@ -329,10 +329,10 @@ function stopTimer() {
     ).innerHTML = `Finished in: ${timer.innerHTML}`;
 }
 
-function touchReset() {
-    squareGrid.removeEventListener("touchmove", rndClr);
-    squareGrid.addEventListener("touchmove", rndClr);
-}
+// function touchReset() {
+//     squareGrid.removeEventListener("touchmove", rndClr);
+//     squareGrid.addEventListener("touchmove", rndClr);
+// }
 
 let squareGrid = document.getElementById("squares");
 let squareList = document.getElementsByClassName("square");
@@ -347,5 +347,5 @@ document.getElementById("click")
 if (document.getElementById("trace")) squareGrid.addEventListener("touchmove", init);
 squareGrid.addEventListener("mouseover", reduceAlpha);
 squareGrid.addEventListener("mouseout", restoreAlpha);
-squareGrid.addEventListener("touchmove", reduceAlpha);
-squareGrid.addEventListener("touchend", restoreAlpha);
+// squareGrid.addEventListener("touchmove", reduceAlpha);
+// squareGrid.addEventListener("touchend", restoreAlpha);

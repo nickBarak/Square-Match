@@ -205,6 +205,18 @@ footer {
   margin: auto;
 }
 
+.googleSignOut {
+  position: absolute;
+  top: 16.5px;
+  right: 18%;
+  color: #000;
+  font-size: .9em;
+}
+
+.googleSignOut:hover {
+  color: #111;
+}
+
 #copyright {
   margin-bottom: 6px;
 }
@@ -231,6 +243,9 @@ footer {
   #title {
     margin-left: 1.2rem;
   }
+  .googleSignOut {
+    right: 19.5%;
+  }
 }
 
 @media only screen and (max-width: 1650px) {
@@ -248,6 +263,9 @@ footer {
   }
   .btn-wrapper {
     margin-top: 1.35rem;
+  }
+  .googleSignOut {
+    right: 20.5%;
   }
 }
 
@@ -267,6 +285,9 @@ footer {
   }
   .btn-wrapper {
     margin-top: 3rem;
+  }
+  .googleSignOut {
+    right: 21.5%;
   }
 }
 
@@ -300,6 +321,9 @@ footer {
     margin-top: 15px;
     font-size: 1.5vw;
   }
+  .googleSignOut {
+    right: 23%;
+  }
 }
 
 @media only screen and (max-width: 1100px) {
@@ -330,6 +354,9 @@ footer {
     height: 33vw;
     width: 33vw;
   }
+  .googleSignOut {
+    right: 26%;
+  }
 }
 
 @media only screen and (max-width: 799px) {
@@ -345,6 +372,9 @@ footer {
   }
   .btn-wrapper {
     font-size: .85rem;
+  }
+  #timer {
+    left: 55px;
   }
   #victoryMsgBox {
     top: 40vw;
@@ -363,6 +393,9 @@ footer {
   #squares-remaining {
     font-size: 1rem;
   }
+  .googleSignOut {
+    right: 31%;
+  }
 }
 
 @media only screen and (max-width: 550px) {
@@ -371,6 +404,9 @@ footer {
   }
   .btn-wrapper {
     font-size: .75rem;
+  }
+  #timer {
+    left: 50px;
   }
   #squares {
     grid-gap: .35em;
@@ -387,6 +423,9 @@ footer {
   }
   footer {
     font-size: .8rem;
+  }
+  .googleSignOut {
+    right: 35%;
   }
 }
 
@@ -413,6 +452,9 @@ footer {
     margin-top: 5px;
     font-size: .65rem;
   }
+  .googleSignOut {
+    right: 40%;
+  }
 }
 
 @media only screen and (max-width: 420px) {
@@ -425,6 +467,9 @@ footer {
   .btn-wrapper {
     font-size: .7rem;
   }
+  #timer {
+    left: 44px;
+  }
   #squares {
     padding: .35em;
   }
@@ -436,6 +481,9 @@ footer {
   }
   footer {
     font-size: .71rem;
+  }
+  .googleSignOut {
+    right: 43%;
   }
 }
 /*# sourceMappingURL=style.css.map */
