@@ -325,7 +325,7 @@ function squaresRemaining() {
             : squareGrid.removeEventListener("mouseover", rndClr);
         if (document.getElementById("click")) squareGrid.removeEventListener("touchmove", rndClr);
             // squareGrid.removeEventListener("touchend" , touchReset);
-        }
+        // }
     }
 }
 
