@@ -336,8 +336,8 @@ function stopTimer() {
     ).innerHTML = `Finished in: ${timer.innerHTML}`;
 }
 
-const helpShow = _ => document.getElementById("help-menu").style = "opacity: 1";
-const helpHide = _ => document.getElementById("help-menu").style = "opacity: 0";
+const helpShow = _ => document.getElementById("help-menu").style = "opacity: 1;";
+const helpHide = _ => document.getElementById("help-menu").style = "opacity: 0;";
 
 // function touchReset() {
 //     squareGrid.removeEventListener("touchmove", rndClr);
@@ -352,10 +352,10 @@ const helpHide = _ => document.getElementById("help-menu").style = "opacity: 0";
 //     } else helpDisplay.style = "display: none";
 // }
 
-const helpBtn = document.getElementById("how-to-play");
-const squareGrid = document.getElementById("squares");
-const squareList = document.getElementsByClassName("square");
-const timer = document.getElementById("timer");
+let helpBtn = document.getElementById("how-to-play");
+let squareGrid = document.getElementById("squares");
+let squareList = document.getElementsByClassName("square");
+let timer = document.getElementById("timer");
 let time = [];
 let counter = 0;
 let timerID;
