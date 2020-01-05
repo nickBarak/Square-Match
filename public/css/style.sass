@@ -22,7 +22,15 @@ header
     padding-top: 5px
     margin-left: 2.2rem
 
-#prompt
+#prompt-trace, #prompt-click
+    font-size: 2em
+    margin: 1em auto .5em auto
+    font-weight: 600
+    grid-column: 4 / 7
+    white-space: nowrap
+
+#prompt-trace-replace
+    display: none
     font-size: 2em
     margin: 1em auto .5em auto
     font-weight: 600
@@ -41,6 +49,39 @@ header
         &:hover
             text-decoration: #fff
 
+    #how-to-play
+        position: absolute
+        right: 160px
+        margin-top: 2.5px
+        background-color: #ddf
+        border-radius: 8px
+        padding: 4.25px
+        color: #555
+        font-family: Helvetica
+        font-weight: 600
+        font-size: .9rem
+        user-select: none
+        cursor: pointer
+
+    #help-menu
+        display: flex
+        flex-direction: column
+        text-align: center
+        background-color: #fff
+        border-radius: 3.5px
+        padding: 15px
+        position: absolute
+        right: 200px
+        margin-top: 35px
+        font-family: arial
+        font-weight: 600
+        width: 20em
+        transition-property: opacity
+        transition-duration: 300ms
+        transition-timing-function: ease-out
+        opacity: 0
+
+
 #reset
     display: inline
     padding: 2.5px
@@ -56,11 +97,11 @@ header
     position: absolute
     left: 60px
     padding-top: 4px
-
+                
 .toggle-wrapper
     display: inline
     position: absolute
-    padding-top: 8px
+    padding-top: 6px
     right: 2px
 
     a
@@ -147,6 +188,7 @@ footer
     left: 0
     right: 0
     margin: auto
+    user-select: none
 
 .googleSignOut
     position: absolute
@@ -188,7 +230,7 @@ footer
     #squares
         height: 75vh
 
-    #prompt
+    #prompt-trace, #prompt-click, #prompt-trace-replace
         font-size: 1.7rem
 
     .btn-wrapper
@@ -205,7 +247,7 @@ footer
     #title
         font-size: 2.25rem
 
-    #prompt
+    #prompt-trace, #prompt-click, #prompt-trace-replace
         font-size: 1.55rem
 
     header
@@ -222,7 +264,7 @@ footer
         font-size: 2rem
         margin-left: 1rem
 
-    #prompt
+    #prompt-trace, #prompt-click, #prompt-trace-replace
         font-size: 1.25rem
 
     header
@@ -254,19 +296,22 @@ footer
     header
         margin-top: 7.5rem
 
-    #prompt
+    #prompt-trace, #prompt-click, #prompt-trace-replace
         padding-top: 1.9rem
 
     .btn-wrapper
         margin-top: .45rem
+        
+        #how-to-play
+            right: 155px
 
 @media only screen and (max-width: 1000px)
     header
         margin-top: 10rem
 
-    #prompt
-        padding-top: 2.3rem
-        font-size: 1.15rem
+        #prompt-trace, #prompt-click, #prompt-trace-replace
+            padding-top: 2.3rem
+            font-size: 1.15rem
     
     .square
         font-size: .8rem
@@ -278,19 +323,31 @@ footer
 
     .googleSignOut
         right: 26%;
+    
+    .btn-wrapper
+
+        #help-menu
+            right: 18vw
+            margin-top: 32px
+        
 
 @media only screen and (max-width: 799px)
     header
         margin-top: 8.5rem
-    #title
-        font-size: 1.65rem
-    
-    #prompt
-        font-size: 1rem
-        padding-top: 2.5rem
+        #title
+            font-size: 1.65rem
+
+        #prompt-trace, #prompt-click, #prompt-trace-replace
+            font-size: 1rem
+            padding-top: 2rem
+            padding-bottom: .25rem
 
     .btn-wrapper
         font-size: .85rem
+
+        #how-to-play
+            right: 140px
+            font-size: .75rem
 
     #timer
         left: 55px
@@ -321,11 +378,28 @@ footer
     header
         7.5rem
 
-    #title
-        font-size: 1.4rem
+        #title
+            font-size: 1.4rem
+
+        #prompt-click
+            font-size: .85rem
+
+        #prompt-trace
+            display: none
+
+        #prompt-trace-replace
+            display: block
+            padding-top: 0rem
+            grid-column-start: 3
+            font-size: .75rem
 
     .btn-wrapper
         font-size: .75rem
+
+        #how-to-play
+            right: 120px
+            margin-top: 3.5px
+            font-size: .65rem
 
     #timer
         left: 50px
@@ -337,10 +411,10 @@ footer
     .square
         font-size: .7rem
 
-    #squares-remaining, #prompt
+    #squares-remaining, #prompt-trace, #prompt-trace-replace
         font-size: .875rem
 
-    #prompt
+    #prompt-trace, #prompt-trace-replace
         padding-top: 1.75rem
 
     footer
@@ -353,7 +427,7 @@ footer
     #title
         font-size: 1.25rem
 
-    #prompt, #squares-remaining
+    #prompt-trace, #prompt-trace-replace, #squares-remaining, #prompt-click
         font-size: .75rem
 
     #victoryMsgBox
@@ -380,11 +454,22 @@ footer
     header
         margin-top: 6.25rem
 
-    #title
-        font-size: 1.1rem
+        #title
+            font-size: 1.1rem
+
+        #prompt-click
+            font-size: .7rem
+            padding-top: 1.65rem
+
+        #prompt-trace-replace
+            font-size: .575rem
 
     .btn-wrapper
         font-size: .7rem
+
+        #how-to-play
+            right: 105px
+            margin-top: 2.5px
 
     #timer
         left: 44px

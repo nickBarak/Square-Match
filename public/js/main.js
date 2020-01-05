@@ -176,21 +176,30 @@ function init(e) {
         function changePrompt() {
             promptID = setInterval(function() {
                 if (p === 1) {
-                    document.getElementById("prompt").innerHTML = "Ready";
+                    document.getElementById("prompt-click").innerHTML = "Ready";
+                    document.getElementById("prompt-trace").innerHTML = "Ready";
                 } else if (p === 2) {
-                    document.getElementById("prompt").innerHTML = "Ready.";
+                    document.getElementById("prompt-click").innerHTML = "Ready.";
+                    document.getElementById("prompt-trace").innerHTML = "Ready.";
                 } else if (p === 3) {
-                    document.getElementById("prompt").innerHTML = "Ready..";
+                    document.getElementById("prompt-click").innerHTML = "Ready..";
+                    document.getElementById("prompt-trace").innerHTML = "Ready..";
                 } else if (p === 4) {
-                    document.getElementById("prompt").innerHTML = "Set";
+                    document.getElementById("prompt-click").innerHTML = "Set";
+                    document.getElementById("prompt-trace").innerHTML = "Set";
                 } else if (p === 5) {
-                    document.getElementById("prompt").innerHTML = "Set.";
+                    document.getElementById("prompt-click").innerHTML = "Set.";
+                    document.getElementById("prompt-trace").innerHTML = "Set.";
                 } else if (p === 6) {
-                    document.getElementById("prompt").innerHTML = "Set..";
+                    document.getElementById("prompt-click").innerHTML = "Set..";
+                    document.getElementById("prompt-trace").innerHTML = "Set..";
                 } else if (p === 7) {
-                    document.getElementById("prompt").innerHTML = "Go!";
+                    document.getElementById("prompt-click").innerHTML = "Go!";
+                    document.getElementById("prompt-trace").innerHTML = "Go!";
                 } else if (p === 21) {
-                    document.getElementById("prompt").innerHTML =
+                    document.getElementById("prompt-click").innerHTML =
+                        "Try to match all the squares!";
+                    document.getElementById("prompt-trace").innerHTML =
                         "Try to match all the squares!";
                 }
                 p++;
@@ -311,7 +320,8 @@ function squaresRemaining() {
         document.getElementById("victoryMsg").style.display = "block";
         document.getElementById("victoryTime").style.display = "block";
         document.getElementById("recordTime").style.display = "block";
-        document.getElementById("prompt").innerHTML = "Nice job!";
+        document.getElementById("prompt-click").innerHTML = "Nice job!";
+        document.getElementById("prompt-trace").innerHTML = "Nice job!";
         document.getElementById("click")
             ? squareGrid.removeEventListener("click", rndClr)
             : squareGrid.removeEventListener("mouseover", rndClr);
@@ -329,14 +339,26 @@ function stopTimer() {
     ).innerHTML = `Finished in: ${timer.innerHTML}`;
 }
 
+const helpShow = _ => document.getElementById("help-menu").style = "opacity: 1";
+const helpHide = _ => document.getElementById("help-menu").style = "opacity: 0";
+
 // function touchReset() {
 //     squareGrid.removeEventListener("touchmove", rndClr);
 //     squareGrid.addEventListener("touchmove", rndClr);
 // }
 
-let squareGrid = document.getElementById("squares");
-let squareList = document.getElementsByClassName("square");
-let timer = document.getElementById("timer");
+// const help = (e) => {
+//     console.log(e);
+//     const helpDisplay = document.getElementsByClassName("help-menu");
+//     if (e == "mouseover") {
+//         helpDisplay.style = "display: flex";
+//     } else helpDisplay.style = "display: none";
+// }
+
+const helpBtn = document.getElementById("how-to-play");
+const squareGrid = document.getElementById("squares");
+const squareList = document.getElementsByClassName("square");
+const timer = document.getElementById("timer");
 let time = [];
 let counter = 0;
 let timerID;
@@ -349,3 +371,5 @@ squareGrid.addEventListener("mouseover", reduceAlpha);
 squareGrid.addEventListener("mouseout", restoreAlpha);
 // squareGrid.addEventListener("touchmove", reduceAlpha);
 // squareGrid.addEventListener("touchend", restoreAlpha);
+helpBtn.addEventListener("mouseover", helpShow);
+helpBtn.addEventListener("mouseout", helpHide);

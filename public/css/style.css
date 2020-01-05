@@ -32,7 +32,18 @@ header {
   margin-left: 2.2rem;
 }
 
-#prompt {
+#prompt-trace, #prompt-click {
+  font-size: 2em;
+  margin: 1em auto .5em auto;
+  font-weight: 600;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 3;
+  grid-column: 4 / 7;
+  white-space: nowrap;
+}
+
+#prompt-trace-replace {
+  display: none;
   font-size: 2em;
   margin: 1em auto .5em auto;
   font-weight: 600;
@@ -60,6 +71,51 @@ header {
           text-decoration: #fff;
 }
 
+.btn-wrapper #how-to-play {
+  position: absolute;
+  right: 160px;
+  margin-top: 2.5px;
+  background-color: #ddf;
+  border-radius: 8px;
+  padding: 4.25px;
+  color: #555;
+  font-family: Helvetica;
+  font-weight: 600;
+  font-size: .9rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+
+.btn-wrapper #help-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 3.5px;
+  padding: 15px;
+  position: absolute;
+  right: 200px;
+  margin-top: 35px;
+  font-family: arial;
+  font-weight: 600;
+  width: 20em;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
+  opacity: 0;
+}
+
 #reset {
   display: inline;
   padding: 2.5px;
@@ -82,7 +138,7 @@ header {
 .toggle-wrapper {
   display: inline;
   position: absolute;
-  padding-top: 8px;
+  padding-top: 6px;
   right: 2px;
 }
 
@@ -203,6 +259,10 @@ footer {
   left: 0;
   right: 0;
   margin: auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .googleSignOut {
@@ -258,7 +318,7 @@ footer {
   #squares {
     height: 75vh;
   }
-  #prompt {
+  #prompt-trace, #prompt-click, #prompt-trace-replace {
     font-size: 1.7rem;
   }
   .btn-wrapper {
@@ -277,7 +337,7 @@ footer {
   #title {
     font-size: 2.25rem;
   }
-  #prompt {
+  #prompt-trace, #prompt-click, #prompt-trace-replace {
     font-size: 1.55rem;
   }
   header {
@@ -296,7 +356,7 @@ footer {
     font-size: 2rem;
     margin-left: 1rem;
   }
-  #prompt {
+  #prompt-trace, #prompt-click, #prompt-trace-replace {
     font-size: 1.25rem;
   }
   header {
@@ -330,11 +390,14 @@ footer {
   header {
     margin-top: 7.5rem;
   }
-  #prompt {
+  #prompt-trace, #prompt-click, #prompt-trace-replace {
     padding-top: 1.9rem;
   }
   .btn-wrapper {
     margin-top: .45rem;
+  }
+  .btn-wrapper #how-to-play {
+    right: 155px;
   }
 }
 
@@ -342,7 +405,7 @@ footer {
   header {
     margin-top: 10rem;
   }
-  #prompt {
+  header #prompt-trace, header #prompt-click, header #prompt-trace-replace {
     padding-top: 2.3rem;
     font-size: 1.15rem;
   }
@@ -357,21 +420,30 @@ footer {
   .googleSignOut {
     right: 26%;
   }
+  .btn-wrapper #help-menu {
+    right: 18vw;
+    margin-top: 32px;
+  }
 }
 
 @media only screen and (max-width: 799px) {
   header {
     margin-top: 8.5rem;
   }
-  #title {
+  header #title {
     font-size: 1.65rem;
   }
-  #prompt {
+  header #prompt-trace, header #prompt-click, header #prompt-trace-replace {
     font-size: 1rem;
-    padding-top: 2.5rem;
+    padding-top: 2rem;
+    padding-bottom: .25rem;
   }
   .btn-wrapper {
     font-size: .85rem;
+  }
+  .btn-wrapper #how-to-play {
+    right: 140px;
+    font-size: .75rem;
   }
   #timer {
     left: 55px;
@@ -399,11 +471,29 @@ footer {
 }
 
 @media only screen and (max-width: 550px) {
-  #title {
+  header #title {
     font-size: 1.4rem;
+  }
+  header #prompt-click {
+    font-size: .85rem;
+  }
+  header #prompt-trace {
+    display: none;
+  }
+  header #prompt-trace-replace {
+    display: block;
+    padding-top: 0rem;
+    -ms-grid-column: 3;
+        grid-column-start: 3;
+    font-size: .75rem;
   }
   .btn-wrapper {
     font-size: .75rem;
+  }
+  .btn-wrapper #how-to-play {
+    right: 120px;
+    margin-top: 3.5px;
+    font-size: .65rem;
   }
   #timer {
     left: 50px;
@@ -415,10 +505,10 @@ footer {
   .square {
     font-size: .7rem;
   }
-  #squares-remaining, #prompt {
+  #squares-remaining, #prompt-trace, #prompt-trace-replace {
     font-size: .875rem;
   }
-  #prompt {
+  #prompt-trace, #prompt-trace-replace {
     padding-top: 1.75rem;
   }
   footer {
@@ -433,7 +523,7 @@ footer {
   #title {
     font-size: 1.25rem;
   }
-  #prompt, #squares-remaining {
+  #prompt-trace, #prompt-trace-replace, #squares-remaining, #prompt-click {
     font-size: .75rem;
   }
   #victoryMsgBox {
@@ -461,11 +551,22 @@ footer {
   header {
     margin-top: 6.25rem;
   }
-  #title {
+  header #title {
     font-size: 1.1rem;
+  }
+  header #prompt-click {
+    font-size: .7rem;
+    padding-top: 1.65rem;
+  }
+  header #prompt-trace-replace {
+    font-size: .575rem;
   }
   .btn-wrapper {
     font-size: .7rem;
+  }
+  .btn-wrapper #how-to-play {
+    right: 105px;
+    margin-top: 2.5px;
   }
   #timer {
     left: 44px;
