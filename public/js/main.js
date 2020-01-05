@@ -97,10 +97,10 @@ function init(e) {
                 document.getElementById("click")
                     ? squareGrid.addEventListener("click", rndClr)
                     : squareGrid.addEventListener("mouseover", rndClr);
-                if (document.getElementById("click")) {
-                    squareGrid.addEventListener("touchstart", rndClr);
+                // if (document.getElementById("click")) {
+                //     squareGrid.addEventListener("touchstart", rndClr);
                     // squareGrid.addEventListener("touchend" , touchReset);
-                }
+                // }
                 squareGrid.addEventListener("mouseover", reduceAlpha);
                 squareGrid.addEventListener("mouseout", restoreAlpha);
                 // squareGrid.addEventListener("touchmove", reduceAlpha);
@@ -111,7 +111,7 @@ function init(e) {
             document.getElementById("click")
                 ? squareGrid.removeEventListener("click", init)
                 : squareGrid.removeEventListener("mouseover", init);
-            if (document.getElementById("click")) squareGrid.removeEventListener("touchstart", init);
+            // if (document.getElementById("click")) squareGrid.removeEventListener("touchstart", init);
             squareGrid.removeEventListener("mouseover", reduceAlpha);
             squareGrid.removeEventListener("mouseout", restoreAlpha);
             // squareGrid.removeEventListener("touchmove", reduceAlpha);
@@ -137,7 +137,7 @@ function init(e) {
                         ? (timer.innerHTML = `00:${time[0].toString() +
                               time[1].toString()}:${time[2].toString() +
                               time[3].toString()}`)
-                        : (timer.innerHTML = `01:${time[0] - 6}${
+                        : (timer.innerHTML = `01:${Number(time[0]) - 6}${
                               time[1]
                           }:${time[2].toString() + time[3].toString()}`);
                 } else if (time.length === 5) {
@@ -151,7 +151,7 @@ function init(e) {
                         time[5].toString()}`;
                 } else {
                     document.getElementById("victoryMsg").innerHTML =
-                        "You Lose!";
+                        "You really played for over an hour huh..\nMaybe this isn't for you";
                     stopTimer();
                     document.getElementById("victoryTime").innerHTML =
                         "99:99:99";
@@ -162,10 +162,10 @@ function init(e) {
                     document.getElementById("click")
                         ? squareGrid.removeEventListener("click", rndClr)
                         : squareGrid.removeEventListener("mouseover", rndClr);
-                    if (document.getElementById("click")) {
-                        squareGrid.removeEventListener("touchstart", rndClr);
+                    // if (document.getElementById("click")) {
+                    //     squareGrid.removeEventListener("touchstart", rndClr);
                         // squareGrid.removeEventListener("touchend" , touchReset);
-                    }
+                    // }
                 }
                 time = [];
             }, 10);
@@ -325,8 +325,8 @@ function squaresRemaining() {
         document.getElementById("click")
             ? squareGrid.removeEventListener("click", rndClr)
             : squareGrid.removeEventListener("mouseover", rndClr);
-        if (document.getElementById("click")) {
-            squareGrid.removeEventListener("touchstart", rndClr);
+        // if (document.getElementById("click")) {
+        //     squareGrid.removeEventListener("touchstart", rndClr);
             // squareGrid.removeEventListener("touchend" , touchReset);
         }
     }
@@ -366,7 +366,7 @@ let timerID;
 document.getElementById("click")
     ? squareGrid.addEventListener("click", init)
     : squareGrid.addEventListener("mouseover", init);
-if (document.getElementById("click")) squareGrid.addEventListener("touchstart", init);
+// if (document.getElementById("click")) squareGrid.addEventListener("touchstart", init);
 squareGrid.addEventListener("mouseover", reduceAlpha);
 squareGrid.addEventListener("mouseout", restoreAlpha);
 // squareGrid.addEventListener("touchmove", reduceAlpha);
