@@ -11,6 +11,34 @@ body {
   background-color: #383838;
 }
 
+#status-div {
+  position: absolute;
+  display: none;
+  width: 25vw;
+  height: 20vw;
+  background-color: #fff;
+  border: 1px solid #111;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  right: 500px;
+  top: 50px;
+  z-index: 2;
+}
+
+#status-close {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  background-color: #cc8855;
+  color: #484848;
+  width: 1.15rem;
+  cursor: pointer;
+}
+
 header {
   display: -ms-grid;
   display: grid;
@@ -86,7 +114,6 @@ header {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  cursor: pointer;
 }
 
 .btn-wrapper #help-menu {
@@ -335,6 +362,9 @@ footer {
     height: 70vw;
     grid-gap: .45em;
   }
+  #status-div {
+    right: 40vw;
+  }
   #title {
     font-size: 2.25rem;
   }
@@ -410,7 +440,7 @@ footer {
     padding-top: 2.3rem;
     font-size: 1.15rem;
   }
-  .square {
+  .square, #status {
     font-size: .8rem;
   }
   #victoryMsgBox {
@@ -438,6 +468,9 @@ footer {
     font-size: 1rem;
     padding-top: 2rem;
     padding-bottom: .25rem;
+  }
+  #status {
+    font-size: .7rem;
   }
   .btn-wrapper {
     font-size: .85rem;
@@ -523,6 +556,9 @@ footer {
 @media only screen and (max-width: 500px) {
   #title {
     font-size: 1.25rem;
+  }
+  #status {
+    font-size: .5rem;
   }
   #prompt-trace, #prompt-trace-replace, #squares-remaining, #prompt-click {
     font-size: .75rem;

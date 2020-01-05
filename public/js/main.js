@@ -370,3 +370,4 @@ squareGrid.addEventListener("mouseout", restoreAlpha);
 // squareGrid.addEventListener("touchend", restoreAlpha);
 helpBtn.addEventListener("mouseover", helpShow);
 helpBtn.addEventListener("mouseout", helpHide);
+document.getElementById("status-close").addEventListener("click", _ => document.getElementById("status-div").style = "display: none");

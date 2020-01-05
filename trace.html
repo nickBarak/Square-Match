@@ -11,6 +11,10 @@
     <body>
      
         <div id="fb-root"></div>
+        <div id="status-div">
+            <div id="status"></div>
+            <button id="status-close">x</button>
+        </div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=1294071634127793&autoLogAppEvents=1"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
 
@@ -36,6 +40,14 @@
             fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
 
+            function statusChangeCallback(response) {
+                if (response.status === 'connected') {
+                    document.getElementById("status").innerHTML = `Logged in as ${response.name}`;
+                    document.getElementById("status-div").style = "display: flex"
+                } else {
+                    document.getElementById("status").innerHTML = `Log in!`;
+                }
+            }
             
             function checkLoginState() {
                 FB.getLoginStatus(function(response) {
@@ -146,6 +158,8 @@
             function onSignIn(googleUser) {
                 let profile = googleUser.getBasicProfile();
                 let id_token = googleUser.getAuthResponse().id_token;
+                document.getElementById("status").innerHTML = `Logged in as ${profile.getName()}`;
+                document.getElementById("status-div").style = "display: flex"
             }
 
             const xhr = new XMLHttpRequest();
