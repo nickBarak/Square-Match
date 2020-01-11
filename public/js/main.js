@@ -98,12 +98,8 @@ function init(e) {
                     ? squareGrid.addEventListener("click", rndClr)
                     : squareGrid.addEventListener("mouseover", rndClr);
                 if (document.getElementById("click")) squareGrid.addEventListener("touchmove", rndClr);
-                    // squareGrid.addEventListener("touchend" , touchReset);
-                // }
                 squareGrid.addEventListener("mouseover", reduceAlpha);
                 squareGrid.addEventListener("mouseout", restoreAlpha);
-                // squareGrid.addEventListener("touchmove", reduceAlpha);
-                // squareGrid.addEventListener("touchend", restoreAlpha);
             }, 2600);
         }
         function disableListeners() {
@@ -113,8 +109,6 @@ function init(e) {
             if (document.getElementById("click")) squareGrid.removeEventListener("touchmove", init);
             squareGrid.removeEventListener("mouseover", reduceAlpha);
             squareGrid.removeEventListener("mouseout", restoreAlpha);
-            // squareGrid.removeEventListener("touchmove", reduceAlpha);
-            // squareGrid.removeEventListener("touchend", restoreAlpha);
         }
         function counting() {
             timerID = window.setInterval(() => {
@@ -123,50 +117,36 @@ function init(e) {
                     .toString()
                     .split("")
                     .forEach(i => time.push(i));
-                if (time.length === 1) {
-                    timer.innerHTML = `00:00:0${time[0]}`;
-                } else if (time.length === 2) {
-                    timer.innerHTML = `00:00:${time[0].toString() +
-                        time[1].toString()}`;
-                } else if (time.length === 3) {
-                    timer.innerHTML = `00:0${time[0]}:${time[1].toString() +
-                        time[2].toString()}`;
-                } else if (time.length === 4) {
-                    time[0] < 6
-                        ? (timer.innerHTML = `00:${time[0].toString() +
-                              time[1].toString()}:${time[2].toString() +
-                              time[3].toString()}`)
-                        : (timer.innerHTML = `01:${Number(time[0]) - 6}${
-                              time[1]
-                          }:${time[2].toString() + time[3].toString()}`);
-                } else if (time.length === 5) {
-                    timer.innerHTML = `0${time[0]}:${time[1].toString() +
-                        time[2].toString()}:${time[3].toString() +
-                        time[4].toString()}`;
-                } else if (time.length === 6) {
-                    timer.innerHTML = `${time[0].toString() +
-                        time[1].toString()}:${time[2].toString() +
-                        time[3].toString()}:${time[4].toString() +
-                        time[5].toString()}`;
+                if (mins < 1) {
+                    if (time.length === 1) {
+                        timer.innerHTML = `00:00:0${time[0]}`;
+                    } else if (time.length === 2) {
+                        timer.innerHTML = `00:00:${time[0].toString() +
+                            time[1].toString()}`;
+                    } else if (time.length === 3) {
+                        timer.innerHTML = `00:0${time[0]}:${time[1].toString() +
+                            time[2].toString()}`;
+                    } else if (time.length === 4) {
+                        timer.innerHTML = `00:${time[0].toString() +
+                                time[1].toString()}:${time[2].toString() +
+                                time[3].toString()}`
+                    }
                 } else {
-                    document.getElementById("victoryMsg").innerHTML =
-                        "You really played for over an hour huh..\nMaybe this isn't for you";
-                    stopTimer();
-                    document.getElementById("victoryTime").innerHTML =
-                        "99:99:99";
-                    document.getElementById("victoryMsgBox").style.display = 'flex';
-                    document.getElementById("victoryMsg").style.display = 'block';
-                    document.getElementById("victoryTime").style.display = 'block';
-                    document.getElementById("recordTime").style.display = 'block';
-                    document.getElementById("click")
-                        ? squareGrid.removeEventListener("click", rndClr)
-                        : squareGrid.removeEventListener("mouseover", rndClr);
-                    if (document.getElementById("click")) squareGrid.removeEventListener("touchmove", rndClr);
-                        // squareGrid.removeEventListener("touchend" , touchReset);
-                    // }
+                    if (mins < 10) {
+                        timer.innerHTML = `${mins}:${timer2ID = window.setInterval(_ => {
+                            scnds++;
+                            if (scnds === 60) scnds = 0;
+                            let scndsDisplayed = scnds;
+                            if (scnds < 10) scndsDisplayed = `0${scnds}`
+                            return scndsDisplayed;
+                        }, 1000)}:${timer3ID = window.setInterval(_ => {
+                            centiseconds++;
+                            if (centiseconds === 100) centiseconds = 0;
+                            return centiseconds;
+                        }, 10)}`
+                    } else timer.innerHTML = `${mins}:${scnds}:${centiseconds}`;
                 }
-                time = [];
-            }, 10);
+            });
         }
         function startTimer() {
             window.setTimeout(counting, 2600);
@@ -324,13 +304,13 @@ function squaresRemaining() {
             ? squareGrid.removeEventListener("click", rndClr)
             : squareGrid.removeEventListener("mouseover", rndClr);
         if (document.getElementById("click")) squareGrid.removeEventListener("touchmove", rndClr);
-            // squareGrid.removeEventListener("touchend" , touchReset);
-        // }
     }
 }
 
 function stopTimer() {
     clearInterval(timerID);
+    clearInterval(timer2ID);
+    clearInterval(timer3ID);
     document.getElementById(
         "victoryTime"
     ).innerHTML = `Finished in: ${timer.innerHTML}`;
@@ -339,26 +319,18 @@ function stopTimer() {
 const helpShow = _ => document.getElementById("help-menu").style = "opacity: 1;";
 const helpHide = _ => document.getElementById("help-menu").style = "opacity: 0;";
 
-// function touchReset() {
-//     squareGrid.removeEventListener("touchmove", rndClr);
-//     squareGrid.addEventListener("touchmove", rndClr);
-// }
-
-// const help = (e) => {
-//     console.log(e);
-//     const helpDisplay = document.getElementsByClassName("help-menu");
-//     if (e == "mouseover") {
-//         helpDisplay.style = "display: flex";
-//     } else helpDisplay.style = "display: none";
-// }
-
-let helpBtn = document.getElementById("how-to-play");
-let squareGrid = document.getElementById("squares");
-let squareList = document.getElementsByClassName("square");
-let timer = document.getElementById("timer");
-let time = [];
-let counter = 0;
-let timerID;
+let helpBtn = document.getElementById("how-to-play"),
+    squareGrid = document.getElementById("squares"),
+    squareList = document.getElementsByClassName("square"),
+    timer = document.getElementById("timer"),
+    time = [],
+    counter = 0,
+    mins = counter % 6000 || 0,
+    scnds = 0,
+    centiseconds = 0,
+    timerID,
+    timer2ID,
+    timer3ID;
 
 document.getElementById("click")
     ? squareGrid.addEventListener("click", init)
@@ -366,8 +338,7 @@ document.getElementById("click")
 if (document.getElementById("click")) squareGrid.addEventListener("touchmove", init);
 squareGrid.addEventListener("mouseover", reduceAlpha);
 squareGrid.addEventListener("mouseout", restoreAlpha);
-// squareGrid.addEventListener("touchmove", reduceAlpha);
-// squareGrid.addEventListener("touchend", restoreAlpha);
 helpBtn.addEventListener("mouseover", helpShow);
 helpBtn.addEventListener("mouseout", helpHide);
 document.getElementById("status-close").addEventListener("click", _ => document.getElementById("status-div").style = "display: none");
+loginCheck.addEventListener("onchange", _ => loginCheck.selectedIndex === 1 ? document.getElementById("status-div").style.display = "flex" : {});
