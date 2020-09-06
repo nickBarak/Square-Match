@@ -1,3 +1,4 @@
+// Darken squares on mouseover
 function reduceAlpha(e) {
     if (e.target !== e.currentTarget && !e.target.getAttribute("id")) {
         if (e.target.getAttribute("state")) {
@@ -26,6 +27,7 @@ function reduceAlpha(e) {
     e.stopPropagation();
 }
 
+// Lighten squares on mouseout
 function restoreAlpha(e) {
     if (e.target !== e.currentTarget && !e.target.getAttribute("id")) {
         if (e.target.getAttribute("state")) {
@@ -95,9 +97,9 @@ function init(e) {
         function addListeners() {
             setTimeout(function() {
                 document.getElementById("click")
-                    ? squareGrid.addEventListener("click", rndClr)
-                    : squareGrid.addEventListener("mouseover", rndClr);
-                if (document.getElementById("click")) squareGrid.addEventListener("touchmove", rndClr);
+                    ? squareGrid.addEventListener("click", setRandomColor)
+                    : squareGrid.addEventListener("mouseover", setRandomColor);
+                if (document.getElementById("click")) squareGrid.addEventListener("touchmove", setRandomColor);
                 squareGrid.addEventListener("mouseover", reduceAlpha);
                 squareGrid.addEventListener("mouseout", restoreAlpha);
             }, 2600);
@@ -110,47 +112,22 @@ function init(e) {
             squareGrid.removeEventListener("mouseover", reduceAlpha);
             squareGrid.removeEventListener("mouseout", restoreAlpha);
         }
-        function counting() {
-            timerID = window.setInterval(() => {
-                counter++;
-                counter
-                    .toString()
-                    .split("")
-                    .forEach(i => time.push(i));
-                if (mins < 1) {
-                    if (time.length === 1) {
-                        timer.innerHTML = `00:00:0${time[0]}`;
-                    } else if (time.length === 2) {
-                        timer.innerHTML = `00:00:${time[0].toString() +
-                            time[1].toString()}`;
-                    } else if (time.length === 3) {
-                        timer.innerHTML = `00:0${time[0]}:${time[1].toString() +
-                            time[2].toString()}`;
-                    } else if (time.length === 4) {
-                        timer.innerHTML = `00:${time[0].toString() +
-                                time[1].toString()}:${time[2].toString() +
-                                time[3].toString()}`
-                    }
-                } else {
-                    if (mins < 10) {
-                        timer.innerHTML = `${mins}:${timer2ID = window.setInterval(_ => {
-                            scnds++;
-                            if (scnds === 60) scnds = 0;
-                            let scndsDisplayed = scnds;
-                            if (scnds < 10) scndsDisplayed = `0${scnds}`
-                            return scndsDisplayed;
-                        }, 1000)}:${timer3ID = window.setInterval(_ => {
-                            centiseconds++;
-                            if (centiseconds === 100) centiseconds = 0;
-                            return centiseconds;
-                        }, 10)}`
-                    } else timer.innerHTML = `${mins}:${scnds}:${centiseconds}`;
-                }
-            });
-        }
         function startTimer() {
-            window.setTimeout(counting, 2600);
+            let t0 = t1 = t2 = t3 = t4 = t5 = 0;
+            function updateTimer() { timer.innerHTML = `${t5}${t4}:${t3}${t2}:${t1}${t0}` }
+            
+            window.setTimeout(_=> {
+                timerIntervals = [
+                    setInterval(_=> { t0 = t0 === 9 ? 0 : t0+1; updateTimer() }, 10),
+                    setInterval(_=> { t1 = t1 === 9 ? 0 : t1+1; updateTimer() }, 100),
+                    setInterval(_=> { t2 = t2 === 9 ? 0 : t2+1; updateTimer() }, 1000),
+                    setInterval(_=> { t3 = t3 === 5 ? 0 : t3+1; updateTimer() }, 10 * 1000),
+                    setInterval(_=> { t4 = t4 === 9 ? 0 : t4+1; updateTimer() }, 6 * 10 * 1000),
+                    setInterval(_=> { t5 = t5 === 5 ? 0 : t5+1; updateTimer() }, 10 * 6 * 10 * 1000)
+                ];
+            }, 2600);
         }
+
         function changePrompt() {
             promptID = setInterval(function() {
                 if (p === 1) {
@@ -231,7 +208,7 @@ function init(e) {
     e.stopPropagation();
 }
 
-function rndClr(e) {
+function setRandomColor(e) {
     if (e.target !== e.currentTarget) {
         clrs = [];
         rndNum = Math.floor(Math.random() * 6);
@@ -262,13 +239,13 @@ function rndClr(e) {
             "state",
             rndNum
         );
-        squaresRemaining();
+        trackSquaresRemaining();
         e.target.style.backgroundColor = `rgb(${clrs[0]},${clrs[1]},${clrs[2]})`;
     }
     e.stopPropagation();
 }
 
-function squaresRemaining() {
+function trackSquaresRemaining() {
     let store = [];
 
     for (let i = 0; i < squareList.length; i++) {
@@ -301,19 +278,35 @@ function squaresRemaining() {
         document.getElementById("prompt-click").innerHTML = "Nice job!";
         document.getElementById("prompt-trace").innerHTML = "Nice job!";
         document.getElementById("click")
-            ? squareGrid.removeEventListener("click", rndClr)
-            : squareGrid.removeEventListener("mouseover", rndClr);
-        if (document.getElementById("click")) squareGrid.removeEventListener("touchmove", rndClr);
+            ? squareGrid.removeEventListener("click", setRandomColor)
+            : squareGrid.removeEventListener("mouseover", setRandomColor);
+        if (document.getElementById("click")) squareGrid.removeEventListener("touchmove", setRandomColor);
     }
 }
 
 function stopTimer() {
-    clearInterval(timerID);
-    clearInterval(timer2ID);
-    clearInterval(timer3ID);
+    timerIntervals.forEach(interval => clearInterval(interval));
     document.getElementById(
         "victoryTime"
     ).innerHTML = `Finished in: ${timer.innerHTML}`;
+    let page = /trace/.exec(location.pathname) ? 'trace' : 'click';
+    localStorage.setItem('times',
+        JSON.stringify(
+            { 
+                ...JSON.parse(localStorage.getItem('times')),
+                [page]: [
+                    ...JSON.parse(localStorage.getItem('times'))[page],
+                    timer.innerHTML
+                ].sort((a, b) => convertTimeStringToNumber(a) - convertTimeStringToNumber(b))
+            }
+        )
+    );
+    console.log(localStorage.getItem('times'));
+    document.getElementById('recordTime').innerHTML = `Best time: ${JSON.parse(localStorage.getItem('times'))[page][0]}`;
+}
+
+function convertTimeStringToNumber(timeString) {
+    return Number(timeString.replace(/:/g, '').replace(/0/g, ''))
 }
 
 const helpShow = _ => document.getElementById("help-menu").style = "opacity: 1;";
@@ -323,14 +316,7 @@ let helpBtn = document.getElementById("how-to-play"),
     squareGrid = document.getElementById("squares"),
     squareList = document.getElementsByClassName("square"),
     timer = document.getElementById("timer"),
-    time = [],
-    counter = 0,
-    mins = counter % 6000 || 0,
-    scnds = 0,
-    centiseconds = 0,
-    timerID,
-    timer2ID,
-    timer3ID;
+    timerIntervals = [];
 
 document.getElementById("click")
     ? squareGrid.addEventListener("click", init)
@@ -340,5 +326,7 @@ squareGrid.addEventListener("mouseover", reduceAlpha);
 squareGrid.addEventListener("mouseout", restoreAlpha);
 helpBtn.addEventListener("mouseover", helpShow);
 helpBtn.addEventListener("mouseout", helpHide);
-document.getElementById("status-close").addEventListener("click", _ => document.getElementById("status-div").style = "display: none");
-loginCheck.addEventListener("onchange", _ => loginCheck.selectedIndex === 1 ? document.getElementById("status-div").style.display = "flex" : {});
+// document.getElementById("status-close").addEventListener("click", _ => document.getElementById("status-div").style = "display: none");
+// loginCheck.addEventListener("onchange", _ => loginCheck.selectedIndex === 1 ? document.getElementById("status-div").style.display = "flex" : {});
+
+!localStorage.getItem('times') && localStorage.setItem('times', JSON.stringify({ click: ['59:59:99'], trace: ['59:59:99'] }));

@@ -4,26 +4,26 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <meta name="google-signin-client_id" content="307551660531-edetdp742dlq1fbhicnom5365ctfv8s8.apps.googleusercontent.com">
-        <link rel="stylesheet" href="./public/css/style.css" />
-        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/dexie/2.0.4/dexie.min.js" integrity="sha256-ubffRsoh9QK5xJC/u3s3drtGFBZUHBm9bHFRzYvtkJI=" crossorigin="anonymous"></script>
+        <!-- <meta name="google-signin-client_id" content="307551660531-edetdp742dlq1fbhicnom5365ctfv8s8.apps.googleusercontent.com"> -->
+        <link rel="stylesheet" href="./css/style.css" />
+        <!-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/dexie/2.0.4/dexie.min.js" integrity="sha256-ubffRsoh9QK5xJC/u3s3drtGFBZUHBm9bHFRzYvtkJI=" crossorigin="anonymous"></script> -->
         <title>SquareMatch</title>
     </head>
     <body>
      
-        <div id="fb-root"></div>
+        <!-- <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=1294071634127793&autoLogAppEvents=1"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <script src="./public/js/login.js"></script>
+        <script src="./public/js/login.js"></script> -->
 
-        <script>
+        <!-- <script>
 
             const db = new Dexie('userDB');
             db.version(1).stores({
                 users: '&email, name, times, googleID, fbID'
             });
 
-        </script>
+        </script> -->
 
         <div id="content">
             <header>
@@ -37,7 +37,7 @@
                 <div id="timer">00:00:00</div>
                 <span id="how-to-play">How to play</span>
                 <div id="help-menu">
-                    <span>There are two game modes: Click and Trace. In both game modes the goal is the same: convert all of the squares to the same color as fast as you can.</span>
+                    <span>There are two game modes: "Click" and "Trace." In both game modes the goal is the same: convert all of the squares to the same color as fast as you can.</span>
                     <span><br></span>
                     <span>Squares will change color randomly as you click on or trace over them, respectively. The counter in the squares' centers will keep track of how many squares you need to convert to win.</span>
                     <span><br></span>
@@ -113,11 +113,11 @@
         </footer>
 
 
-        <div class="fb-login-button" style="position: absolute; top: 49px; right: 12.3%;" data-width="" data-size="medium" data-button-type="continue_with" data-auto-logout-link="true" data-use-continue-as="false"></div>
+        <!-- <div class="fb-login-button" style="position: absolute; top: 49px; right: 12.3%;" data-width="" data-size="medium" data-button-type="continue_with" data-auto-logout-link="true" data-use-continue-as="false"></div>
         <div class="g-signin2" style="height: 27px; width: 98px; position: absolute; top: 13px; right: 12.3%;" data-onsuccess="onSignIn"></div>
-        <a class="googleSignOut" href="#" onclick="signOut();">Sign out</a>
+        <a class="googleSignOut" href="#" onclick="signOut();">Sign out</a> -->
           
-        <script type="text/JavaScript" src="./public/js/main.js"></script>
+        <script type="text/JavaScript" src="./main.js"></script>
 
     </body>
 </html>
