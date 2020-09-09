@@ -258,7 +258,6 @@ footer {
   text-align: center;
   left: 0;
   right: 0;
-  margin: auto;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -597,6 +596,12 @@ footer {
   }
   .googleSignOut {
     right: 43%;
+  }
+}
+
+@media screen and (max-height: 650px) {
+  footer {
+    position: relative;
   }
 }
 /*# sourceMappingURL=style.css.map */
