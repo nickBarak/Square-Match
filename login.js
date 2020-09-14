@@ -48,7 +48,7 @@ function checkLoginState() {
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut();
-    document.getElementById('facebook').style.visibility = 'visible';
+    document.getElementsByClassName('fb-login-button')[0].style.visibility = 'visible';
 }
 
 function onSignIn(googleUser) {
