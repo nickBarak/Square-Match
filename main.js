@@ -297,18 +297,10 @@ function stopTimer() {
     localStorage.setItem(user,
         JSON.stringify(
             { 
-                click: convertTimeNumberToString(
-                    Math.min(
-                        convertTimeStringToNumber(userData[click]),
-                        page === 'click' ? convertTimeStringToNumber(timer.innerHTML) : infinity
-                    )
-                ),
-                trace: convertTimeNumberToString(
-                    Math.min(
-                        convertTimeStringToNumber(userData[click]),
-                        page === 'click' ? convertTimeStringToNumber(timer.innerHTML) : infinity
-                    )
-                )
+                click: [userData[click], page === 'click' ? timer.innerHTML : infinity]
+                    .sort((a, b) => convertTimeStringToNumber(a)-convertTimeStringToNumber(b))[0],
+                trace: [userData[click], page === 'click' ? timer.innerHTML : infinity]
+                        .sort((a, b) => convertTimeStringToNumber(a)-convertTimeStringToNumber(b))[0]
             }
         )
     );
