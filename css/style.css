@@ -224,6 +224,10 @@ header {
   background-color: white;
   z-index: 1;
   display: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 #victoryTime {
@@ -376,7 +380,7 @@ footer {
     font-size: 5vw;
   }
   #victoryTime {
-    margin-top: 125px;
+    margin-top: 225px;
     font-size: 2vw;
   }
   #recordTime {
@@ -419,6 +423,9 @@ footer {
     height: 33vw;
     width: 33vw;
   }
+  #victoryTime {
+    margin-top: 133px;
+  }
   .googleSignOut {
     right: 26%;
   }
@@ -459,7 +466,7 @@ footer {
     width: 225px;
   }
   #victoryMsg {
-    font-size: 70px;
+    font-size: 40px;
   }
   #victoryTime {
     margin-top: 80px;

@@ -30,7 +30,8 @@ function statusChangeCallback(response) {
         sessionStorage.setItem('currentUser', response.email);
         gSignIn.style.visibility = gSignOut.style.visibility = 'hidden';
         fbButton.style.top = '12.5px';
-        alert(`Signed in as ${response.name}`);
+        !sessionStorage.getItem('seenFBNotice') && alert(`Signed in as ${response.name}`);
+        sessionStorage.setItem('seenFBNotice', true);
     } else {
         fbButton.style.top = '49px';
         gSignIn.style.visibility = gSignOut.style.visibility = 'visible';
@@ -57,5 +58,6 @@ function onSignIn(googleUser) {
     sessionStorage.setItem('currentUser', profile.getEmail());
     document.getElementsByClassName('fb-login-button')[0].style.display = 'none';
     document.getElementsByClassName('googleSignOut')[0].style.visibility = 'visible';
-    alert(`Signed in as ${profile.getName()}`);
+    !sessionStorage.getItem('seenGoogleNotice') && alert(`Signed in as ${profile.getName()}`);
+    sessionStorage.setItem('seenGoogleNotice', true);
 }
