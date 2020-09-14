@@ -246,7 +246,7 @@ header {
 
 footer {
   height: 2.5em;
-  position: absolute;
+  position: relative;
   bottom: 12px;
   display: -webkit-box;
   display: -ms-flexbox;
