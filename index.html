@@ -6,7 +6,6 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <meta name="google-signin-client_id" content="307551660531-edetdp742dlq1fbhicnom5365ctfv8s8.apps.googleusercontent.com">
         <link rel="stylesheet" href="./css/style.css" />
-        <!-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/dexie/2.0.4/dexie.min.js" integrity="sha256-ubffRsoh9QK5xJC/u3s3drtGFBZUHBm9bHFRzYvtkJI=" crossorigin="anonymous"></script> -->
         <title>SquareMatch</title>
     </head>
     <body>
@@ -15,15 +14,6 @@
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=1294071634127793&autoLogAppEvents=1"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="./login.js"></script>
-
-        <!-- <script>
-
-            const db = new Dexie('userDB');
-            db.version(1).stores({
-                users: '&email, name, times, googleID, fbID'
-            });
-
-        </script> -->
 
         <div id="content">
             <header>
@@ -110,11 +100,6 @@
             <div id="copyright">Copyright ©2020; SquareMatch @squarematch.xyz</div>
             <div id="me">Nick Barak</div>
         </footer>
-
-        <select id="login-check" style="display: none">
-            <option selected value="false"></option>
-            <option value="true"></option>
-        </select>
 
         <div class="fb-login-button" scope="public_profile,email" onlogin="checkLoginState" style="position: absolute; top: 49px; right: 12.3%;" data-width="" data-size="medium" data-button-type="continue_with" data-auto-logout-link="true" data-use-continue-as="false"></div>
         <div class="g-signin2" style="height: 27px; width: 98px; position: absolute; top: 13px; right: 12.3%;" data-onsuccess="onSignIn"></div>

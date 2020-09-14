@@ -285,24 +285,34 @@ function trackSquaresRemaining() {
 }
 
 function stopTimer() {
+    let user = sessionStorage.getItem('currentUser');
+    if (!user) user = 'anonymous';
+    let userData = JSON.parse(localStorage.getItem(user));
+
     timerIntervals.forEach(interval => clearInterval(interval));
     document.getElementById(
         "victoryTime"
     ).innerHTML = `Finished in: ${timer.innerHTML}`;
     let page = /trace/.exec(location.pathname) ? 'trace' : 'click';
-    localStorage.setItem('times',
+    localStorage.setItem(user,
         JSON.stringify(
             { 
-                ...JSON.parse(localStorage.getItem('times')),
-                [page]: [
-                    ...JSON.parse(localStorage.getItem('times'))[page],
-                    timer.innerHTML
-                ].sort((a, b) => convertTimeStringToNumber(a) - convertTimeStringToNumber(b))
+                click: convertTimeNumberToString(
+                    Math.min(
+                        convertTimeStringToNumber(userData[click]),
+                        page === 'click' ? convertTimeStringToNumber(timer.innerHTML) : infinity
+                    )
+                ),
+                trace: convertTimeNumberToString(
+                    Math.min(
+                        convertTimeStringToNumber(userData[click]),
+                        page === 'click' ? convertTimeStringToNumber(timer.innerHTML) : infinity
+                    )
+                )
             }
         )
     );
-    console.log(localStorage.getItem('times'));
-    document.getElementById('recordTime').innerHTML = `Best time: ${JSON.parse(localStorage.getItem('times'))[page][0]}`;
+    document.getElementById('recordTime').innerHTML = `Best time: ${JSON.parse(localStorage.getItem(user))[page]}`;
 }
 
 function convertTimeStringToNumber(timeString) {
@@ -326,7 +336,9 @@ squareGrid.addEventListener("mouseover", reduceAlpha);
 squareGrid.addEventListener("mouseout", restoreAlpha);
 helpBtn.addEventListener("mouseover", helpShow);
 helpBtn.addEventListener("mouseout", helpHide);
-// document.getElementById("status-close").addEventListener("click", _ => document.getElementById("status-div").style = "display: none");
-// loginCheck.addEventListener("onchange", _ => loginCheck.selectedIndex === 1 ? document.getElementById("status-div").style.display = "flex" : {});
 
-!localStorage.getItem('times') && localStorage.setItem('times', JSON.stringify({ click: ['59:59:99'], trace: ['59:59:99'] }));
+document.getElementById("status-close").addEventListener("click", _ => document.getElementById("status-div").style = "display: none");
+
+!localStorage.getItem('times') && localStorage.setItem('anonymous', JSON.stringify(
+    { click: '59:59:99', trace: '59:59:99' }
+));
