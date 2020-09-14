@@ -1,3 +1,10 @@
+
+
+let gSignIn = document.getElementsByClassName('g-signin2')[0],
+    gSignOut = document.getElementsByClassName('googleSignOut')[0],
+    fbButton = document.getElementById('fb-login-button')[0];
+
+
 // FB
 
 window.fbAsyncInit = function() {
@@ -20,10 +27,6 @@ js = d.createElement(s); js.id = id;
 js.src = "https://connect.facebook.net/en_US/sdk.js";
 fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-
-let gSignIn = document.getElementsByClassName('g-signin2')[0],
-    gSignOut = document.getElementsByClassName('googleSignOut')[0],
-    fbButton = document.getElementById('fb-login-button')[0];
 
 function statusChangeCallback(response) {
     if (response.status === 'connected') {
@@ -54,6 +57,6 @@ function signOut() {
 function onSignIn(googleUser) {
     let profile = googleUser.getBasicProfile().getEmail();
     sessionStorage.setItem('currentUser', profile.getEmail());
-    document.getElementById('facebook').style.visibility = 'hidden';
+    fbButton.style.visibility = 'hidden';
     alert(`Signed in as ${profile.getName()}`);
 }
