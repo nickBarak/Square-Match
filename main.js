@@ -287,7 +287,9 @@ function trackSquaresRemaining() {
 function stopTimer() {
     let user = sessionStorage.getItem('currentUser');
     if (!user) user = 'anonymous';
+    console.log(user);
     let userData = JSON.parse(localStorage.getItem(user));
+    console.log(JSON.stringify(userData));
 
     timerIntervals.forEach(interval => clearInterval(interval));
     document.getElementById(
@@ -297,9 +299,9 @@ function stopTimer() {
     localStorage.setItem(user,
         JSON.stringify(
             { 
-                click: [userData[click], page === 'click' ? timer.innerHTML : infinity]
+                click: [userData['click'], page === 'click' ? timer.innerHTML : '59:59:99']
                     .sort((a, b) => convertTimeStringToNumber(a)-convertTimeStringToNumber(b))[0],
-                trace: [userData[click], page === 'click' ? timer.innerHTML : infinity]
+                trace: [userData['trace'], page === 'trace' ? timer.innerHTML : '59:59:99']
                         .sort((a, b) => convertTimeStringToNumber(a)-convertTimeStringToNumber(b))[0]
             }
         )
