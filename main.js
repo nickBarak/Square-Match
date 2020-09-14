@@ -285,11 +285,10 @@ function trackSquaresRemaining() {
 }
 
 function stopTimer() {
-    let user = sessionStorage.getItem('currentUser');
-    if (!user) user = 'anonymous';
-    console.log(user);
-    let userData = JSON.parse(localStorage.getItem(user));
-    console.log(JSON.stringify(userData));
+    let user = sessionStorage.getItem('currentUser') || 'anyonymous';
+    console.log('user', user);
+    let userData = localStorage.getItem(user) && JSON.parse(localStorage.getItem(user));
+    console.log('user data', JSON.stringify(userData));
 
     timerIntervals.forEach(interval => clearInterval(interval));
     document.getElementById(
