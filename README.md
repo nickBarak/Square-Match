@@ -1,5 +1,7 @@
 # Square Match
 
+Live URL: https://squarematch.xyz
+
 This light-weight game application will test your hand-eye-coordination and response time. The game offers two modes of play: one based on clicking (or tapping on a mobile device) and one based on tracing your mouse cursor. A giant square grid filled with 16 smaller squares sits in the middle of the page, with each small square containing the number 16. After initializing the game by either clicking or tracing over a square, the board will begin to change colors and resolve with a relatively even distribution of six distinct colors. At this point, you can begin to manipulate the squares individually. Continuing to click on or trace over squares will cause them to change color again at random.
 
 The objective of the game is to manipulate the colors of the squares until all 16 squares are the same color. The number in the middle of each square represents the minimum number of squares that still must be converted in order to win the game. Every square will always contain the same number as the other squares, and this number can also be observed after the words 'Squares Remaining: ' below the grid. After completing the game, a victory menu will appear reporting your time as well as your fastest recorded time on that device and browser. The reset button will refresh the page and the 'Toggle: ' options allow you to transition between game modes.
