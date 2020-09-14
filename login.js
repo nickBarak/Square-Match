@@ -48,12 +48,14 @@ function checkLoginState() {
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut();
-    document.getElementsByClassName('fb-login-button')[0].style.visibility = 'visible';
+    document.getElementsByClassName('fb-login-button')[0].style.display = 'block';
+    document.getElementsByClassName('googleSignOut')[0].style.visibility = 'hidden';
 }
 
 function onSignIn(googleUser) {
     let profile = googleUser.getBasicProfile();
     sessionStorage.setItem('currentUser', profile.getEmail());
-    document.getElementsByClassName('fb-login-button')[0].style.visibility = 'hidden';
+    document.getElementsByClassName('fb-login-button')[0].style.display = 'none';
+    document.getElementsByClassName('googleSignOut')[0].style.visibility = 'visible';
     alert(`Signed in as ${profile.getName()}`);
 }
