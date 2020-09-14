@@ -339,6 +339,6 @@ helpBtn.addEventListener("mouseout", helpHide);
 
 document.getElementById("status-close").addEventListener("click", _ => document.getElementById("status-div").style = "display: none");
 
-!localStorage.getItem('times') && localStorage.setItem('anonymous', JSON.stringify(
+!localStorage.getItem('anonymous') && localStorage.setItem('anonymous', JSON.stringify(
     { click: '59:59:99', trace: '59:59:99' }
 ));
