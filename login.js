@@ -52,7 +52,7 @@ function signOut() {
 }
 
 function onSignIn(googleUser) {
-    let profile = googleUser.getBasicProfile().getEmail();
+    let profile = googleUser.getBasicProfile();
     sessionStorage.setItem('currentUser', profile.getEmail());
     document.getElementsByClassName('fb-login-button')[0].style.visibility = 'hidden';
     alert(`Signed in as ${profile.getName()}`);
