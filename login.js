@@ -2,7 +2,7 @@
 
 let gSignIn = document.getElementsByClassName('g-signin2')[0],
     gSignOut = document.getElementsByClassName('googleSignOut')[0],
-    fbButton = document.getElementById('fb-login-button')[0];
+    fbButton = document.getElementsByClassName('fb-login-button')[0];
 
 
 // FB
