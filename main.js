@@ -24,7 +24,7 @@ function reduceAlpha(e) {
             }
         } else e.target.style.backgroundColor = "rgba(170, 170, 170, .85)";
     }
-    e.stopPropagation();
+    // e.stopPropagation();
 }
 
 // Lighten squares on mouseout
@@ -53,7 +53,7 @@ function restoreAlpha(e) {
             }
         } else e.target.style.backgroundColor = "rgba(170, 170, 170, 1)";
     }
-    e.stopPropagation();
+    // e.stopPropagation();
 }
 
 function init(e) {
@@ -205,7 +205,7 @@ function init(e) {
         startTimer();
         clear();
     }
-    e.stopPropagation();
+    // e.stopPropagation();
 }
 
 function setRandomColor(e) {
@@ -242,7 +242,7 @@ function setRandomColor(e) {
         trackSquaresRemaining();
         e.target.style.backgroundColor = `rgb(${clrs[0]},${clrs[1]},${clrs[2]})`;
     }
-    e.stopPropagation();
+    // e.stopPropagation();
 }
 
 function trackSquaresRemaining() {
@@ -334,3 +334,13 @@ helpBtn.addEventListener("mouseout", helpHide);
 !localStorage.getItem('anonymous') && localStorage.setItem('anonymous', JSON.stringify(
     { click: '59:59:99', trace: '59:59:99' }
 ));
+
+window.addEventListener('load', _ => {
+    if (sessionStorage.getItem('musicStamp')) {
+        let audio = document.getElementsByTagName('audio')[0];
+        audio.currentTime = sessionStorage.getItem('musicStamp');
+        audio.play();
+    }
+});
+
+document.getElementsByTagName('audio')[0].play();

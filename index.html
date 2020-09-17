@@ -9,7 +9,11 @@
         <title>SquareMatch</title>
     </head>
     <body>
-        <audio src="./bg-music.ogg" loop autoplay style="display:none"></audio>
+        <div id="click" style="display:none"></div>
+        <div style="top: .75rem; left: 3.25rem; position: absolute">Want some music?</div>
+        <audio controls loop style="top: 2.25rem; left: 2rem; position: absolute">
+            <source src="./bg-music.ogg" type="audio/ogg">
+        </audio>
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=1294071634127793&autoLogAppEvents=1"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -22,7 +26,7 @@
                 <div id="prompt-trace" style="display: none"></div>
             </header>
             <div class="btn-wrapper">
-                <a id="click" href="./index.html"><button id="reset">Reset</button></a>
+                <button id="reset" onclick="{sessionStorage.setItem('musicStamp', JSON.stringify(document.getElementsByTagName('audio')[0].currentTime)); window.location.reload();}">Reset</button>
                 <div id="timer">00:00:00</div>
                 <span id="how-to-play">How to play</span>
                 <div id="help-menu">
@@ -34,9 +38,9 @@
                 </div>
                 <div class="toggle-wrapper">
                     Toggle: 
-                    <a href="./index.html">Click</a>
+                    <a href="./index.html" onclick="sessionStorage.setItem('musicStamp', JSON.stringify(document.getElementsByTagName('audio')[0].currentTime));">Click</a>
                     /
-                    <a href="./trace.html">Trace</a>
+                    <a href="./trace.html" onclick="sessionStorage.setItem('musicStamp', JSON.stringify(document.getElementsByTagName('audio')[0].currentTime));">Trace</a>
                 </div>
             </div>
             <div id="squares">
