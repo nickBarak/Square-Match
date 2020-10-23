@@ -27,7 +27,8 @@
                 <div id="prompt-trace-replace">Sorry! This mode doesn't work on mobile devices :(</div>
             </header>
             <div class="btn-wrapper">
-            <button id="reset" onclick="{sessionStorage.setItem('musicStamp', JSON.stringify(document.getElementsByTagName('audio')[0].currentTime)); window.location.reload();}">Reset</button>
+                <!-- sessionStorage.setItem('musicStamp', JSON.stringify(document.getElementsByTagName('audio')[0].currentTime));  -->
+            <button id="reset" onclick="window.location.reload();">Reset</button>
                 <div id="timer">00:00:00</div>
                 <span id="how-to-play">How to play</span>
                 <div id="help-menu">
