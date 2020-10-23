@@ -34,7 +34,7 @@ function statusChangeCallback(response) {
         sessionStorage.setItem('seenFBNotice', true);
     } else {
         fbButton.style.top = '49px';
-        gSignIn.style.visibility = gSignOut.style.visibility = 'visible';
+        gSignIn.style.visibility = 'visible';
     }
 }
 
